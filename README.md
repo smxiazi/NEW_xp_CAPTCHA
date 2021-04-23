@@ -1,4 +1,4 @@
-# NEW_xp_CAPTCHA
+# xp_CAPTCHA(白嫖版)
 
 
 ### 说明
