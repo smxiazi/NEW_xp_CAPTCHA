@@ -125,6 +125,9 @@ Attack type处选择 Pitchfork,在http头部位置插入xiapao:验证码的URL�
 
 ![image](https://user-images.githubusercontent.com/30351807/115872728-b5e86500-a474-11eb-8d4f-32344006ee36.png)
 
+### 效果
+![image](http://www.nmd5.com/wp-content/uploads/2021/04/20.gif)
+
 
 
 
