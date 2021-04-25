@@ -128,6 +128,6 @@ Attack type处选择 Pitchfork,在http头部位置插入xiapao:验证码的URL�
 
 
 # blog
-http://www.nmd5.comhttp://www.nmd5.com
+http://www.nmd5.com
 
 
