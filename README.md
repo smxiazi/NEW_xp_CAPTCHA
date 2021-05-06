@@ -126,6 +126,26 @@ Attack type处选择 Pitchfork,在http头部位置插入xiapao:验证码的URL�
 ![image](https://user-images.githubusercontent.com/30351807/115872728-b5e86500-a474-11eb-8d4f-32344006ee36.png)
 
 
+# 疑难杂症
+
+![image](https://user-images.githubusercontent.com/30351807/117260637-dc999900-ae81-11eb-8783-42775ade829f.png)
+
+换成python 3.5版本即可
+
+****
+
+![image](https://user-images.githubusercontent.com/30351807/117260840-12d71880-ae82-11eb-8020-2e00027c52a4.png)
+
+
+![image](https://user-images.githubusercontent.com/30351807/117260767-fd61ee80-ae81-11eb-95d7-462a1d4284c7.png)
+
+
+就是跑一下不跑了
+
+需要jython版本大于等于2.7.1
+
+![image](https://user-images.githubusercontent.com/30351807/117260907-22566180-ae82-11eb-8d44-746ebe97ce54.png)
+
 
 # blog
 http://www.nmd5.com
