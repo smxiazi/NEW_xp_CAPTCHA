@@ -1,5 +1,11 @@
 # xp_CAPTCHA(白嫖版)
 
+### 更新2.0
+
+新增加了个保存最新的50个验证码及结果
+
+![image](https://user-images.githubusercontent.com/30351807/117296872-2006fe00-aea8-11eb-9dc5-94fa5afa729a.png)
+
 
 ### 说明
 xp_CAPTCHA (白嫖版)
