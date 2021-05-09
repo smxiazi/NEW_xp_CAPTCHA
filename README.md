@@ -153,9 +153,10 @@ Attack type处选择 Pitchfork,在http头部位置插入xiapao:验证码的URL�
 
 ![image](https://user-images.githubusercontent.com/30351807/117260907-22566180-ae82-11eb-8d44-746ebe97ce54.png)
 
+************
 
-验证码如果比较复杂的可以试试付费的接口 1块钱500个验证码
-https://github.com/smxiazi/xp_CAPTCHA
+* 验证码如果比较复杂的可以试试付费的接口 1块钱500个验证码
+* https://github.com/smxiazi/xp_CAPTCHA
 
 
 # blog
