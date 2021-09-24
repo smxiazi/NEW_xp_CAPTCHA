@@ -1,5 +1,6 @@
 # xp_CAPTCHA(白嫖版)
 
+* 若要准确率更高，请用 https://github.com/smxiazi/xp_CAPTCHA （这个调用别人商业成熟的验证码识别接口，一块钱可以识别500次）
 
 ### 更新3.0 21-9-3
 
