@@ -4,20 +4,12 @@
 
 **********
 
-### 更新3.0 21-9-3
+### 更新3.1 22-1-13
 
-修复点小bug
+新增支持返回json格式验证码
 
-![image](https://user-images.githubusercontent.com/30351807/132017067-ece4c653-3226-4439-8a12-f40e1b444e1c.png)
+![Xnip2022-01-13_16-26-55](https://user-images.githubusercontent.com/30351807/149293859-b4c51c30-7184-49dd-a37b-be6633738f45.jpg)
 
-
-*********
-
-### 更新2.0
-
-新增加了个保存最新的50个验证码及结果
-
-![image](https://user-images.githubusercontent.com/30351807/117297112-66f4f380-aea8-11eb-8fe1-d06fb3105bbb.png)
 
 *********
 
@@ -175,7 +167,32 @@ Attack type处选择 Pitchfork,在http头部位置插入xiapao:验证码的URL�
 # blog
 http://www.nmd5.com
 
+************
 
-![image](https://user-images.githubusercontent.com/30351807/116027890-9164d680-a688-11eb-9fd6-d5cae855389a.png)
+### 更新3.1 22-1-13
+
+新增支持返回json格式验证码
+
+![Xnip2022-01-13_16-26-55](https://user-images.githubusercontent.com/30351807/149293859-b4c51c30-7184-49dd-a37b-be6633738f45.jpg)
+
+
+*********
+
+### 更新3.0 21-9-3
+
+修复点小bug
+
+![image](https://user-images.githubusercontent.com/30351807/132017067-ece4c653-3226-4439-8a12-f40e1b444e1c.png)
+
+
+*********
+
+### 更新2.0
+
+新增加了个保存最新的50个验证码及结果
+
+![image](https://user-images.githubusercontent.com/30351807/117297112-66f4f380-aea8-11eb-8fe1-d06fb3105bbb.png)
+
+*********
 
 
