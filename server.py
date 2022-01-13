@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- conding:utf-8 -*-
 from http.server import HTTPServer, BaseHTTPRequestHandler
-import muggle_ocr
 import re,time,base64,os
 
 host = ('0.0.0.0', 8899)
 count = 50 #保存多少个验证码及结果
+
 
 class Resquest(BaseHTTPRequestHandler):
     def handler(self):
@@ -33,7 +33,6 @@ class Resquest(BaseHTTPRequestHandler):
             if self.path != '/base64':
                 self.send_error(404, "Page not Found!")
                 return
-
             img_name = time.time()
             req_datas = self.rfile.read(int(self.headers['content-length']))
             req_datas = req_datas.decode()
@@ -82,9 +81,13 @@ class Resquest(BaseHTTPRequestHandler):
         self.wfile.write(text.encode('utf-8'))
 
 if __name__ == '__main__':
+    print('正在加载中请稍后……')
+    import muggle_ocr
     os.makedirs('temp', exist_ok=True)
     with open('temp/log.txt', 'w') as f:
         pass
     server = HTTPServer(host, Resquest)
     print("Starting server, listen at: %s:%s" % host)
+    print('加载完成！请访问：http://127.0.0.1:%s' % host[1])
+    print('github:https://github.com/smxiazi/NEW_xp_CAPTCHA\n\n')
     server.serve_forever()
