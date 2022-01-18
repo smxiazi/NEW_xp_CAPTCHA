@@ -13,11 +13,11 @@ host = ('127.0.0.1', 8899)
 
 class BurpExtender(IBurpExtender, IIntruderPayloadGeneratorFactory):
     def registerExtenderCallbacks(self, callbacks):
-        #×¢²ápayloadÉú³ÉÆ÷
+        #æ³¨å†Œpayloadç”Ÿæˆå™¨
         callbacks.registerIntruderPayloadGeneratorFactory(self)
-        #²å¼şÀïÃæÏÔÊ¾µÄÃû×Ö
+        #æ’ä»¶é‡Œé¢æ˜¾ç¤ºçš„åå­—
         callbacks.setExtensionName("xp_CAPTCHA")
-        print 'xp_CAPTCHA  ÖĞÎÄÃû:Ï¹ÅÜÑéÖ¤Âë\nblog£ºhttp://www.nmd5.com/\nT00ls£ºhttps://www.t00ls.net/ \nThe loner°²È«ÍÅ¶Ó author:ËãÃü¿[×Ó\n\nÓÃ·¨£º\nÔÚheadÍ·²¿Ìí¼Óxiapao:ÑéÖ¤ÂëµÄURL\n\nÈç£º\n\nPOST /login HTTP/1.1\nHost: www.baidu.com\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:84.0) Gecko/20100101 Firefox/84.0\nAccept: text/plain, */*; q=0.01\nAccept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nX-Requested-With: XMLHttpRequest\nxiapao:http://www.baidu.com/get-validate-code\nContent-Length: 84\nConnection: close\nCookie: JSESSIONID=24D59677C5EDF0ED7AFAB8566DC366F0\n\nusername=admin&password=admin&vcode=8888\n\n'
+        print 'xp_CAPTCHA  ä¸­æ–‡å:çè·‘éªŒè¯ç \nblogï¼šhttp://www.nmd5.com/\nT00lsï¼šhttps://www.t00ls.net/ \nThe lonerå®‰å…¨å›¢é˜Ÿ author:ç®—å‘½ç¸–å­\n\nç”¨æ³•ï¼š\nåœ¨headå¤´éƒ¨æ·»åŠ xiapao:éªŒè¯ç çš„URL\n\nå¦‚ï¼š\n\nPOST /login HTTP/1.1\nHost: www.baidu.com\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:84.0) Gecko/20100101 Firefox/84.0\nAccept: text/plain, */*; q=0.01\nAccept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\nX-Requested-With: XMLHttpRequest\nxiapao:http://www.baidu.com/get-validate-code\nContent-Length: 84\nConnection: close\nCookie: JSESSIONID=24D59677C5EDF0ED7AFAB8566DC366F0\n\nusername=admin&password=admin&vcode=8888\n\n'
 
     def getGeneratorName(self):
         return "xp_CAPTCHA"
@@ -27,42 +27,42 @@ class BurpExtender(IBurpExtender, IIntruderPayloadGeneratorFactory):
 
 class xp_CAPTCHA(IIntruderPayloadGenerator):
     def __init__(self, attack):
-        tem = "".join(chr(abs(x)) for x in attack.getRequestTemplate()) #requestÄÚÈİ
-        cookie = re.findall("Cookie: (.+?)\r\n", tem)[0] #»ñÈ¡cookie
+        tem = "".join(chr(abs(x)) for x in attack.getRequestTemplate()) #requestå†…å®¹
+        cookie = re.findall("Cookie: (.+?)\r\n", tem)[0] #è·å–cookie
         xp_CAPTCHA = re.findall("xiapao:(.+?)\r\n", tem)[0]
-        ssl._create_default_https_context = ssl._create_unverified_context #ºöÂÔÖ¤Êé£¬·ÀÖ¹Ö¤Êé±¨´í
+        ssl._create_default_https_context = ssl._create_unverified_context #å¿½ç•¥è¯ä¹¦ï¼Œé˜²æ­¢è¯ä¹¦æŠ¥é”™
         print xp_CAPTCHA+'\n'
         print 'cookie:' + cookie+'\n'
         self.xp_CAPTCHA = xp_CAPTCHA
         self.cookie = cookie
-        self.max = 1 #payload×î´óÊ¹ÓÃ´ÎÊı
-        self.num = 0 #±ê¼ÇpayloadµÄÊ¹ÓÃ´ÎÊı
+        self.max = 1 #payloadæœ€å¤§ä½¿ç”¨æ¬¡æ•°
+        self.num = 0 #æ ‡è®°payloadçš„ä½¿ç”¨æ¬¡æ•°
         self.attack = attack
 
     def hasMorePayloads(self):
-        #Èç¹ûpayloadÊ¹ÓÃµ½ÁË×î´ó´ÎÊıreset¾ÍÇå0
+        #å¦‚æœpayloadä½¿ç”¨åˆ°äº†æœ€å¤§æ¬¡æ•°resetå°±æ¸…0
         if self.num == self.max:
-            return False  # µ±´ïµ½×î´ó´ÎÊıµÄÊ±ºò¾Íµ÷ÓÃreset
+            return False  # å½“è¾¾åˆ°æœ€å¤§æ¬¡æ•°çš„æ—¶å€™å°±è°ƒç”¨reset
         else:
             return True
 
-    def getNextPayload(self, payload):  # Õâ¸öº¯ÊıÇë¿´ÏÂÎÄ½âÊÍ
-        xp_CAPTCHA_url = self.xp_CAPTCHA #ÑéÖ¤Âëurl
+    def getNextPayload(self, payload):  # è¿™ä¸ªå‡½æ•°è¯·çœ‹ä¸‹æ–‡è§£é‡Š
+        xp_CAPTCHA_url = self.xp_CAPTCHA #éªŒè¯ç url
 
         print xp_CAPTCHA_url
         headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36","Cookie":self.cookie}
         request = urllib2.Request(xp_CAPTCHA_url,headers=headers)
-        CAPTCHA = urllib2.urlopen(request).read() #»ñÈ¡Í¼Æ¬
+        CAPTCHA = urllib2.urlopen(request).read() #è·å–å›¾ç‰‡
 
-        #ÅĞ¶ÏÑéÖ¤ÂëÊı¾İ°üÊÇ·ñÎªjson¸ñÊ½
-        if '"' in CAPTCHA:
+        #åˆ¤æ–­éªŒè¯ç æ•°æ®åŒ…æ˜¯å¦ä¸ºjsonæ ¼å¼
+        if re.findall('"\s*:\s*.?"',CAPTCHA):
             CAPTCHA = CAPTCHA.split('"')
-            CAPTCHA.sort(key=lambda i: len(i), reverse=True)  # °´ÕÕ×Ö·û´®³¤¶ÈÅÅĞò
+            CAPTCHA.sort(key=lambda i: len(i), reverse=True)  # æŒ‰ç…§å­—ç¬¦ä¸²é•¿åº¦æ’åº
             CAPTCHA = CAPTCHA[0].split(',')
-            CAPTCHA.sort(key=lambda i: len(i), reverse=True)  # °´ÕÕ×Ö·û´®³¤¶ÈÅÅĞò
+            CAPTCHA.sort(key=lambda i: len(i), reverse=True)  # æŒ‰ç…§å­—ç¬¦ä¸²é•¿åº¦æ’åº
             CAPTCHA_base64 = CAPTCHA[0]
         else:
-            CAPTCHA_base64 = base64.b64encode(CAPTCHA) #°ÑÍ¼Æ¬base64±àÂë
+            CAPTCHA_base64 = base64.b64encode(CAPTCHA) #æŠŠå›¾ç‰‡base64ç¼–ç 
 
         request = urllib2.Request('http://%s:%s/base64'%host, 'base64='+CAPTCHA_base64)
         response = urllib2.urlopen(request).read()
@@ -70,5 +70,5 @@ class xp_CAPTCHA(IIntruderPayloadGenerator):
         return response
 
     def reset(self):
-        self.num = 0  # ÇåÁã
+        self.num = 0  # æ¸…é›¶
         return
