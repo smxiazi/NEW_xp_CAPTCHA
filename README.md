@@ -138,6 +138,9 @@ Attack type处选择 Pitchfork,在http头部位置插入xiapao:验证码的URL�
 # 疑难杂症
 
 ![image](https://user-images.githubusercontent.com/30351807/153835775-e5324385-3084-4972-84d3-fe96f88ed2cf.png)
+
+导入错误
+
 把第二行的`#coding:gbk` 修改成 `#coding:utf-8` 即可
 
 ****
