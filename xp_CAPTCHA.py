@@ -61,6 +61,10 @@ class xp_CAPTCHA(IIntruderPayloadGenerator):
             CAPTCHA = CAPTCHA[0].split(',')
             CAPTCHA.sort(key=lambda i: len(i), reverse=True)  # 按照字符串长度排序
             CAPTCHA_base64 = CAPTCHA[0]
+        elif re.findall('data:image/\D*;base64,', CAPTCHA):
+            CAPTCHA = CAPTCHA.split(',')
+            CAPTCHA.sort(key=lambda i: len(i), reverse=True)  # 按照字符串长度排序
+            CAPTCHA_base64 = CAPTCHA[0]
         else:
             CAPTCHA_base64 = base64.b64encode(CAPTCHA) #把图片base64编码
 
