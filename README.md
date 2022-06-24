@@ -39,7 +39,7 @@ xp_CAPTCHA (白嫖版)
 ```
 python3 -m pip install requests
 python3 -m pip install -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com muggle-ocr
-pip install ddddocr -i https://pypi.tuna.tsinghua.edu.cn/simple
+python3 -m pip install ddddocr -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 ![image](https://user-images.githubusercontent.com/30351807/115872316-3f4b6780-a474-11eb-8f25-a2de13274510.png)
