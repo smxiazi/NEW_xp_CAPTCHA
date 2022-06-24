@@ -19,13 +19,15 @@ xp_CAPTCHA (白嫖版)
 *********
 ### 使用
 
-<img width="1250" alt="image" src="https://user-images.githubusercontent.com/30351807/175553035-9c3ad8a8-397f-48af-acd3-9f6d3cc3e0bf.png">
+<img width="1255" alt="image" src="https://user-images.githubusercontent.com/30351807/175557148-b6b7fa0f-5f7a-49fd-9a2a-4c51eda7e0bf.png">
 
 <img width="1250" alt="image" src="https://user-images.githubusercontent.com/30351807/175553590-9702d872-26a3-4b87-8b3c-0b6a6831e4ab.png">
 
 <img width="1204" alt="image" src="https://user-images.githubusercontent.com/30351807/175553779-103f90f5-2283-4022-ad32-87eee8443086.png">
 
-<img width="1159" alt="image" src="https://user-images.githubusercontent.com/30351807/175554183-3e68d3e0-6345-4e17-bd93-d1517c431340.png">
+<img width="1214" alt="image" src="https://user-images.githubusercontent.com/30351807/175557360-8a4b976c-6e73-42f0-9053-d087c3bbc442.png">
+
+<img width="665" alt="image" src="https://user-images.githubusercontent.com/30351807/175557566-66e46ff9-4bcc-40de-82ad-fed3ff8bc37d.png">
 
 
 
