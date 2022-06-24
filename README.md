@@ -33,11 +33,13 @@ xp_CAPTCHA (白嫖版)
 
 ### 安装
 
-需要python3 小于3.7的版本（3.6.6版本请测没问题）
+* 需要python3 小于3.7的版本（3.6.6版本请测没问题）
 
-安装 `muggle_ocr` 模块（大概400M左右）
+* 安装 文件比较大，可能需要一点时间。
 ```
+python3 -m pip install requests
 python3 -m pip install -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com muggle-ocr
+pip install ddddocr -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 ![image](https://user-images.githubusercontent.com/30351807/115872316-3f4b6780-a474-11eb-8f25-a2de13274510.png)
