@@ -23,7 +23,7 @@ xp_CAPTCHA (白嫖版)
 
 *********
 ### 使用
-
+* 用python3 启动server.py服务
 * 把对应的关键字写在填写验证码处即可
 
 <img width="1255" alt="image" src="https://user-images.githubusercontent.com/30351807/175557148-b6b7fa0f-5f7a-49fd-9a2a-4c51eda7e0bf.png">
