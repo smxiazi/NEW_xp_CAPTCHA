@@ -19,7 +19,7 @@ class Resquest(BaseHTTPRequestHandler):
             return
         with open('temp/log.txt', 'r') as f:
             content = f.read()
-        data = '<title>xp_CAPTCHA</title><body style="text-align:center"><h1>验证码识别：xp_CAPTCHA</h1><a href="http://www.nmd5.com">author:算命縖子</a><p><TABLE style="BORDER-RIGHT: #ff6600 2px dotted; BORDER-TOP: #ff6600 2px dotted; BORDER-LEFT: #ff6600 2px dotted; BORDER-BOTTOM: #ff6600 2px dotted; BORDER-COLLAPSE: collapse" borderColor=#ff6600 height=40 cellPadding=1 align=center border=2><tr align=center><td>验证码</td><td>识别结果</td><td>时间</td><td>验证码模块</td></tr>%s</body>'%(content)
+        data = '<title>xp_CAPTCHA</title><body style="text-align:center"><h1>验证码识别：xp_CAPTCHA V4.1</h1><a href="http://www.nmd5.com">author:算命縖子</a><p><TABLE style="BORDER-RIGHT: #ff6600 2px dotted; BORDER-TOP: #ff6600 2px dotted; BORDER-LEFT: #ff6600 2px dotted; BORDER-BOTTOM: #ff6600 2px dotted; BORDER-COLLAPSE: collapse" borderColor=#ff6600 height=40 cellPadding=1 align=center border=2><tr align=center><td>验证码</td><td>识别结果</td><td>时间</td><td>验证码模块</td></tr>%s</body>'%(content)
         self.send_response(200)
         self.send_header('Content-type', 'text/html; charset=UTF-8')
         self.end_headers()
@@ -83,11 +83,13 @@ class Resquest(BaseHTTPRequestHandler):
                         CAPTCHA = CAPTCHA[0].split(',')
                         CAPTCHA.sort(key=lambda i: len(i), reverse=True)  # 按照字符串长度排序
                         CAPTCHA_base64 = CAPTCHA[0]
+                        text_img = False
                     elif re.findall('data:image/\D*;base64,', CAPTCHA):
                         print("base64格式")
                         CAPTCHA = CAPTCHA.split(',')
                         CAPTCHA.sort(key=lambda i: len(i), reverse=True)  # 按照字符串长度排序
                         CAPTCHA_base64 = CAPTCHA[0]
+                        text_img = False
                     else:
                         print("图片格式")
                         text_img = True
