@@ -71,7 +71,7 @@ class Resquest(BaseHTTPRequestHandler):
                         "Cookie": cookie}
                     print("\n\n"+url)
                     #print(headers)
-                    request = requests.get(url,headers=headers,timeout=3)
+                    request = requests.get(url,headers=headers,timeout=3,verify=False)
                     CAPTCHA = request.text# 获取图片
                     print("图片地址响应码：",request.status_code)
 
