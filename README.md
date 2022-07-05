@@ -72,4 +72,6 @@ yum install libglvnd-glx-1.0.1-0.8.git5baa1e5.el7.x86_64
 ```
 
 
+### Stargazers over time
 
+[![Stargazers over time](https://starchart.cc/smxiazi/NEW_xp_CAPTCHA.svg)](https://starchart.cc/smxiazi/NEW_xp_CAPTCHA)
