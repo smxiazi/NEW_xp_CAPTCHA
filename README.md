@@ -48,6 +48,8 @@ python3 -m pip install requests
 python3 -m pip install -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com muggle-ocr
 python3 -m pip install ddddocr -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
+如果是用win系统可以直接下载打包好的环境 `NEW_xp_CAPTCHA win64 python环境完整版.rar`
+* 链接: https://pan.baidu.com/s/1U0ZRjtxdqmNYF0b_O-6B1Q 提取码: tfi5
 
 ![image](https://user-images.githubusercontent.com/30351807/115872316-3f4b6780-a474-11eb-8f25-a2de13274510.png)
 
