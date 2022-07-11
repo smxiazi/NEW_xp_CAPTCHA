@@ -41,7 +41,7 @@ xp_CAPTCHA (白嫖版)
 ### 安装
 
 * 需要python3 小于3.7的版本（3.6.6版本请测没问题）
-* 如果是用win系统可以直接下载打包好的环境 `NEW_xp_CAPTCHA win64 python环境完整版.rar`
+* 如果是用win系统可以直接下载打包好的环境,内置python3.6.6版本以及下载好对应的模块 `NEW_xp_CAPTCHA win64 python环境完整版.rar`
 * 链接: https://pan.baidu.com/s/1U0ZRjtxdqmNYF0b_O-6B1Q 提取码: tfi5
 
 
