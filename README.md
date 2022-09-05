@@ -9,9 +9,12 @@
 
 **********
 
-### 更新4.1 2022-6-24
+### 更新4.2 2022-9-5
 
-* 大改版，强烈安装新版本
+* 新增支持从验证码反回包中获取内容填充到请求包中（该功能可以支持uuid验证码格式以及其他类似模式）
+
+<img width="1404" alt="image" src="https://user-images.githubusercontent.com/30351807/188346185-917da8a5-62a1-4095-97ce-ff9896b558ea.png">
+
 
 *********
 
@@ -80,3 +83,9 @@ yum install libglvnd-glx-1.0.1-0.8.git5baa1e5.el7.x86_64
 ### Star
 
 [![Stargazers over time](https://starchart.cc/smxiazi/NEW_xp_CAPTCHA.svg)](https://starchart.cc/smxiazi/NEW_xp_CAPTCHA)
+
+**********
+
+### 更新4.1 2022-6-24
+
+* 大改版，强烈安装新版本
