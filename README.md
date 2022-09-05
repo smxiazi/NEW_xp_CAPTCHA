@@ -44,7 +44,7 @@ xp_CAPTCHA (白嫖版)
 
 * 验证码响应体模式
 
-每次获取验证码，他返回的歌手为json格式，其中包含了一个字段为uuid，每次登录时都会要求账户密码验证码和uuid一起请求。
+每次获取验证码，他返回包为json格式，其中包含了一个字段为uuid，每次登录时都会要求账户密码验证码和uuid一起请求。
 <img width="1397" alt="image" src="https://user-images.githubusercontent.com/30351807/188490525-c69cabf9-68aa-4c75-874a-1fb22ea37ebc.png">
 
 正常使用正则即可
