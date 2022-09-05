@@ -8,21 +8,12 @@ import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-import javax.swing.SwingUtilities;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ItemListener;
-import javax.swing.JTextField;
-import javax.swing.ButtonGroup;
-import javax.swing.JRadioButton;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.JTextArea;
+import javax.swing.JComboBox;
 
 
 public class BurpExtender implements IBurpExtender, ITab, IHttpListener
@@ -48,6 +39,10 @@ public class BurpExtender implements IBurpExtender, ITab, IHttpListener
     String captcha_modular_4;
     String captcha_modular_5;
     JTextArea jta;//存放日志输入
+    int senior_re= 0; //用来存放高级模式选中的验证码编号
+    JTextField jps_txtfield_1;//高级模式re正则内容
+    JTextField jps_txtfield_2;//高级模式下匹配到的值
+    JComboBox jb_1;//高级模式下 数据来源
 
 
     @Override
@@ -57,7 +52,7 @@ public class BurpExtender implements IBurpExtender, ITab, IHttpListener
         this.stdout = new PrintWriter(callbacks.getStdout(), true);
         this.stdout.println("hello xp_CAPTCHA!");
         this.stdout.println("你好 欢迎使用 瞎跑!");
-        this.stdout.println("version:4.1");
+        this.stdout.println("version:4.2");
 
         // keep a reference to our callbacks object
         this.callbacks = callbacks;
@@ -66,7 +61,7 @@ public class BurpExtender implements IBurpExtender, ITab, IHttpListener
         helpers = callbacks.getHelpers();
 
         // set our extension name
-        callbacks.setExtensionName("xp_CAPTCHA V4.1");
+        callbacks.setExtensionName("xp_CAPTCHA V4.2");
 
         // create our UI
         SwingUtilities.invokeLater(new Runnable()
@@ -102,36 +97,36 @@ public class BurpExtender implements IBurpExtender, ITab, IHttpListener
                 JLabel jl_10=new JLabel("");
 
                 ButtonGroup group_1=new ButtonGroup();
-                JRadioButton rb_url_1_1=new JRadioButton("验证码识别一（muggle_ocr）",true);
-                JRadioButton rb_url_1_2=new JRadioButton("验证码识别二（ddddocr）");
+                JRadioButton rb_url_1_1=new JRadioButton("验证码识别一（muggle_ocr）");
+                JRadioButton rb_url_1_2=new JRadioButton("验证码识别二（ddddocr）",true);
                 group_1.add(rb_url_1_1);
                 group_1.add(rb_url_1_2);
 
                 ButtonGroup group_2=new ButtonGroup();
-                JRadioButton rb_url_2_1=new JRadioButton("验证码识别一（muggle_ocr）",true);
-                JRadioButton rb_url_2_2=new JRadioButton("验证码识别二（ddddocr）");
+                JRadioButton rb_url_2_1=new JRadioButton("验证码识别一（muggle_ocr）");
+                JRadioButton rb_url_2_2=new JRadioButton("验证码识别二（ddddocr）",true);
                 group_2.add(rb_url_2_1);
                 group_2.add(rb_url_2_2);
 
                 ButtonGroup group_3=new ButtonGroup();
-                JRadioButton rb_url_3_1=new JRadioButton("验证码识别一（muggle_ocr）",true);
-                JRadioButton rb_url_3_2=new JRadioButton("验证码识别二（ddddocr）");
+                JRadioButton rb_url_3_1=new JRadioButton("验证码识别一（muggle_ocr）");
+                JRadioButton rb_url_3_2=new JRadioButton("验证码识别二（ddddocr）",true);
                 group_3.add(rb_url_3_1);
                 group_3.add(rb_url_3_2);
 
                 ButtonGroup group_4=new ButtonGroup();
-                JRadioButton rb_url_4_1=new JRadioButton("验证码识别一（muggle_ocr）",true);
-                JRadioButton rb_url_4_2=new JRadioButton("验证码识别二（ddddocr）");
+                JRadioButton rb_url_4_1=new JRadioButton("验证码识别一（muggle_ocr）");
+                JRadioButton rb_url_4_2=new JRadioButton("验证码识别二（ddddocr）",true);
                 group_4.add(rb_url_4_1);
                 group_4.add(rb_url_4_2);
 
                 ButtonGroup group_5=new ButtonGroup();
-                JRadioButton rb_url_5_1=new JRadioButton("验证码识别一（muggle_ocr）",true);
-                JRadioButton rb_url_5_2=new JRadioButton("验证码识别二（ddddocr）");
+                JRadioButton rb_url_5_1=new JRadioButton("验证码识别一（muggle_ocr）");
+                JRadioButton rb_url_5_2=new JRadioButton("验证码识别二（ddddocr）",true);
                 group_5.add(rb_url_5_1);
                 group_5.add(rb_url_5_2);
 
-                //添加到面板上
+                //左边
                 jp.add(jl_0);
                 jp.add(txtfield_0);
                 jp.add(jl_00);
@@ -166,18 +161,86 @@ public class BurpExtender implements IBurpExtender, ITab, IHttpListener
                 jp.add(rb_url_5_2);
                 jp.add(jl_10);
 
-                //右边框上面的内容
+                //右边框上面的内容1
                 JPanel jps=new JPanel();
                 jps.setLayout(new GridLayout(9, 1)); //六行一列
                 JLabel jls=new JLabel("插件名：瞎跑 author：算命縖子");    //创建一个标签
                 JLabel jls_1=new JLabel("blog:www.nmd5.com");
-                JLabel jls_2=new JLabel("版本：xp_CAPTCHA V4.1");
+                JLabel jls_2=new JLabel("版本：xp_CAPTCHA V4.2");
                 JLabel jls_3=new JLabel("感谢名单：小白(Assassins)");
                 JCheckBox chkbox1=new JCheckBox("启动插件", true);//创建指定文本和状态的复选框
                 JCheckBox chkbox2=new JCheckBox("监控Intruder");//创建指定文本的复选框
                 JCheckBox chkbox3=new JCheckBox("监控Repeater");
                 JButton btn1=new JButton("保存配置");
                 JLabel jls_5=new JLabel("修改任何配置都记得点击保存");
+
+                //右边框上面的内容2
+                JPanel jps_3=new JPanel();
+                jps_3.setLayout(new GridLayout(10, 1)); //六行一列
+                JComboBox jb_0 = new  JComboBox();    //创建JComboBox
+                jb_0.addItem("验证码编号：1");
+                jb_0.addItem("验证码编号：2");
+                jb_0.addItem("验证码编号：3");
+                jb_0.addItem("验证码编号：4");
+                jb_0.addItem("验证码编号：5");
+                JLabel jps_2_1=new JLabel("数据来源：");    //创建一个标签
+                jb_1 = new  JComboBox();    //创建JComboBox
+                jb_1.addItem("验证码响应体");    //向下拉列表中添加一项
+                jb_1.addItem("验证码响应头");
+
+
+                JLabel jps_2_3=new JLabel("正则：");    //创建一个标签
+                jps_txtfield_1=new JTextField("\"uuid\":\"(.*?)\"",1);
+
+                JLabel jps_2_2=new JLabel("修改的数据包（关键字：@xiapao@x@）：");    //创建一个标签
+                JComboBox jb_2 = new  JComboBox();    //创建JComboBox
+                jb_2.addItem("要爆破的请求包");    //向下拉列表中添加一项
+                JLabel jps_2_4=new JLabel("匹配到的值：");    //创建一个标签
+                jps_txtfield_2=new JTextField("",1);
+                jps_txtfield_2.setEditable(false);
+                jps_txtfield_2.setBackground(Color.pink);//设置组件的背景色
+                JButton jps_2_bt_1 =new JButton("开启");
+
+                //高级模式开启按钮
+                jps_2_bt_1.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if(jps_2_bt_1.getText().equals("开启")){
+                            jps_2_bt_1.setText("关闭");
+                            jps_txtfield_1.setEditable(false);
+                            jps_txtfield_1.setForeground(Color.GRAY);//设置组件的背景色
+                            senior_re = jb_0.getSelectedIndex()+1;
+                            jl_0.setText("    瞎跑接口HOST:Port：          高级模式开启中，对应的验证码编号为号"+senior_re+",关键字为：@xiapao@x@");
+                            jb_0.setEditable(true);
+                            jb_1.setEditable(true);
+                            jb_2.setEditable(true);
+                        }else {
+                            jps_2_bt_1.setText("开启");
+                            jps_txtfield_1.setEditable(true);
+                            jps_txtfield_1.setForeground(Color.BLACK);
+                            jl_0.setText("    瞎跑接口HOST:Port：");
+                            senior_re = 0;
+                            jb_0.setEditable(false);
+                            jb_1.setEditable(false);
+                            jb_2.setEditable(false);
+                        }
+                    }
+                });
+
+                //高级模式 数据来源下拉框
+                jb_1.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if(jb_1.getSelectedIndex()==1){
+                            jps_txtfield_1.setText("Set-Cookie|SESSION=(.*?);");
+                            jta.insert("验证码响应头正则格式为：响应头参数名|响应头对应的参数值的正则。如：Set-Cookie|SESSION=(.*?);\n\n",0);
+                        }else {
+                            jps_txtfield_1.setText("\"uuid\":\"(.*?)\"");
+                        }
+                    }
+                });
+
+
 
 
                 //右边框下面的内容
@@ -311,6 +374,7 @@ public class BurpExtender implements IBurpExtender, ITab, IHttpListener
                     }
                 });
 
+                //右边上 设置
                 jps.add(jls);
                 jps.add(jls_1);
                 jps.add(jls_2);
@@ -321,15 +385,34 @@ public class BurpExtender implements IBurpExtender, ITab, IHttpListener
                 jps.add(btn1);
                 jps.add(jls_5);
 
+                //右边下
                 jps_2.add(jsp);
                 jps_2.add(btn2);
                 jps_2.add(jls_4);
                 jps_2.add(jls_6);
                 jps_2.add(jls_7);
 
+                //右边上 高级设置
+                jps_3.add(jb_0);
+                jps_3.add(jps_2_1);
+                jps_3.add(jb_1);
+                jps_3.add(jps_2_3);
+                jps_3.add(jps_txtfield_1);
+                jps_3.add(jps_2_2);
+                jps_3.add(jb_2);
+                jps_3.add(jps_2_4);
+                jps_3.add(jps_txtfield_2);
+                jps_3.add(jps_2_bt_1);
+
+
+
+                JTabbedPane tabs = new JTabbedPane();
+                tabs.addTab("设置",jps);
+                tabs.addTab("高级设置", jps_3);
+
 
                 //右边
-                splitPanes.setLeftComponent(jps);//上面
+                splitPanes.setLeftComponent(tabs);//上面
                 splitPanes.setRightComponent(jps_2);//下面
 
                 //整体分布
@@ -342,6 +425,7 @@ public class BurpExtender implements IBurpExtender, ITab, IHttpListener
                 callbacks.customizeUiComponent(jps);
                 callbacks.customizeUiComponent(jp);
                 callbacks.customizeUiComponent(jps_2);
+                callbacks.customizeUiComponent(jps_3);
 
                 // add the custom tab to Burp's UI
                 callbacks.addSuiteTab(BurpExtender.this);
@@ -443,12 +527,20 @@ public class BurpExtender implements IBurpExtender, ITab, IHttpListener
             jta.insert("验证码"+xiapao_count+"：该数据包中没找到cookie，需要有cookie的数据包才支持验证码识别！\n\n",0);//验证码结果输出到插件界面
             return;
         }
-        
+
         //对验证码接口发起请求
-        List<String> Xiaopao_head = new ArrayList();;
-        Xiaopao_head.add("POST /imgurl HTTP/1.1");
-        Xiaopao_head.add("Host: "+XiaPao_api_HOST);
-        String Xiapao_body="url="+captcha_url_base64+"&cookie="+captcha_cookie_base64+"&type="+captcha_type;
+        String Xiapao_body;
+        List<String> Xiaopao_head = new ArrayList();
+        if(senior_re == xiapao_count){
+            //开启高级模式，需要带入正则
+            Xiaopao_head.add("POST /imgurl HTTP/1.1");
+            Xiaopao_head.add("Host: "+XiaPao_api_HOST);
+            Xiapao_body="url="+captcha_url_base64+"&cookie="+captcha_cookie_base64+"&type="+captcha_type+"&re="+helpers.base64Encode(jps_txtfield_1.getText())+"&rf="+jb_1.getSelectedIndex();
+        }else {
+            Xiaopao_head.add("POST /imgurl HTTP/1.1");
+            Xiaopao_head.add("Host: "+XiaPao_api_HOST);
+            Xiapao_body="url="+captcha_url_base64+"&cookie="+captcha_cookie_base64+"&type="+captcha_type;
+        }
 
         IHttpService NEW_HttpService=helpers.buildHttpService(XiaPao_api_HOST,XiaPao_api_Port,"http");
         byte[] bodyByte = Xiapao_body.getBytes();
@@ -469,21 +561,42 @@ public class BurpExtender implements IBurpExtender, ITab, IHttpListener
         String[] temp_1 = helpers.bytesToString(requestResponse.getResponse()).split("\\n");
         String captcha_data_ok = temp_1[temp_1.length-1].replace("\r","");//验证码识别结果
         BurpExtender.this.stdout.println(captcha_data_ok);
-        jta.insert("验证码"+xiapao_count+"："+captcha_data_ok+"\n",0);//验证码结果输出到插件界面
+        if(senior_re == xiapao_count) {
+            String[] captcha_data_ok_all = captcha_data_ok.split("\\|");
+            captcha_data_ok = captcha_data_ok_all[0];
+            jps_txtfield_2.setText(captcha_data_ok_all[1]);
+            jta.insert("高级模式-验证码" + xiapao_count + "：" + captcha_data_ok + "\n正则结果为："+jps_txtfield_2.getText()+"\n\n", 0);//验证码结果输出到插件界面
+        }else {
+            jta.insert("验证码" + xiapao_count + "：" + captcha_data_ok + "\n", 0);//验证码结果输出到插件界面
+        }
 
+        //修改正文
         IRequestInfo analyIRequestInfo = helpers.analyzeRequest(baseRequestResponse);
         int bodyOffset = analyIRequestInfo.getBodyOffset();//通过上面的analyIRequestInfo得到请求数据包体（body）的起始偏移
-        byte[] body = request.substring(bodyOffset).replaceAll("@xiapao@\\d@",captcha_data_ok).getBytes(StandardCharsets.UTF_8);//通过起始偏移点得到请求数据包体（body）的内容,然后替换
+        String body_temp_1 = request.substring(bodyOffset).replaceAll("@xiapao@\\d@",captcha_data_ok);
+        if(senior_re == xiapao_count){
+            body_temp_1 = body_temp_1.replaceAll("@xiapao@x@",jps_txtfield_2.getText());
 
-        //把验证码替换上，修改请求包
-        for(int i=0;i<=headers.size()-1;i++){
+            //修改头部
+            for(int i=0;i<headers.size();i++){
+                if (headers.get(i).indexOf("@xiapao@x@") != -1){
+                    String captcha_data = headers.get(i).replaceAll("@xiapao@x@",jps_txtfield_2.getText());//正则替换
+                    headers.set(i,captcha_data);
+                }
+            }
+
+        }
+        byte[] body = body_temp_1.getBytes(StandardCharsets.UTF_8);//通过起始偏移点得到请求数据包体（body）的内容,然后替换
+
+        //修改头部
+        for(int i=0;i<headers.size();i++){
             //BurpExtender.this.stdout.println(headers.get(i));
             if (headers.get(i).indexOf("@xiapao@") != -1){
                 String captcha_data = headers.get(i).replaceAll("@xiapao@\\d@",captcha_data_ok);//正则替换
-                //BurpExtender.this.stdout.println(captcha_data);
                 headers.set(i,captcha_data);
             }
         }
+
 
         byte[] newRequest = helpers.buildHttpMessage(headers,body);
         baseRequestResponse.setRequest(newRequest);//设置最终新的请求包
