@@ -42,6 +42,19 @@ xp_CAPTCHA (白嫖版)
 
 ### 高级设置使用
 
+* 验证码响应体模式
+
+每次获取验证码，他返回的歌手为json格式，其中包含了一个字段为uuid，每次登录时都会要求账户密码验证码和uuid一起请求。
+<img width="1397" alt="image" src="https://user-images.githubusercontent.com/30351807/188490525-c69cabf9-68aa-4c75-874a-1fb22ea37ebc.png">
+
+正常使用正则即可
+<img width="1418" alt="image" src="https://user-images.githubusercontent.com/30351807/188490926-fe351131-f1f9-4a25-8612-3dc5d7b5180d.png">
+
+<img width="1392" alt="image" src="https://user-images.githubusercontent.com/30351807/188491180-c6da6d0b-fbc5-4094-b35c-7d118755b7fd.png">
+
+
+
+
 * 验证码响应头模式
 
 该站每次请求获取验证码，都会重新设置cookie。
