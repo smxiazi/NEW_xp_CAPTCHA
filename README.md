@@ -47,6 +47,8 @@ xp_CAPTCHA (白嫖版)
 该站每次请求获取验证码，都会重新设置cookie。
 <img width="1410" alt="image" src="https://user-images.githubusercontent.com/30351807/188486933-e086f07a-2aaa-49e5-832a-8d83d4abcb63.png">
 
+响应头部的正则参数语法：
+响应头对应的参数名|对应参数值的正则匹配。如我这个站是从 `Set-Cookie`里面获取`kaptchaId`的值，那么正则为`Set-Cookie|kaptchaId=(.*?);`
 <img width="1435" alt="image" src="https://user-images.githubusercontent.com/30351807/188487200-468ff302-977b-4ea5-96f8-2fdca126261d.png">
 
 <img width="1413" alt="image" src="https://user-images.githubusercontent.com/30351807/188487344-91b40601-d704-484f-a148-e8241647d15e.png">
