@@ -8,6 +8,10 @@
 * 爆破时，记得把线程设置为1。
 
 **********
+相关文章：
+[验证码识别插件-xp_CAPTCHA的高级用法](https://mp.weixin.qq.com/s/iA9XEuoTyjOAxSDoIJsm5Q)
+
+**********
 
 ### 更新4.2 2022-9-5
 
