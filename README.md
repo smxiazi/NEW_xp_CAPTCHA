@@ -93,45 +93,6 @@ xp_CAPTCHA (白嫖版)
 <img width="1413" alt="image" src="https://user-images.githubusercontent.com/30351807/188487344-91b40601-d704-484f-a148-e8241647d15e.png">
 
 
-### 安装
-
-* 需要python3 小于3.7的版本（3.6.6版本请测没问题）
-* 如果是用win系统可以直接下载打包好的环境,内置python3.6.6版本以及下载好对应的模块 `NEW_xp_CAPTCHA win64 python环境完整版.rar`
-* 链接: https://pan.baidu.com/s/1U0ZRjtxdqmNYF0b_O-6B1Q 提取码: tfi5
-
-也可以自己安装对应的模块：
-
-* 安装 文件比较大，可能需要一点时间。
-```
-python3 -m pip install requests
-python3 -m pip install -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com muggle-ocr
-python3 -m pip install ddddocr -i https://pypi.tuna.tsinghua.edu.cn/simple
-```
-
-
-![image](https://user-images.githubusercontent.com/30351807/115872316-3f4b6780-a474-11eb-8f25-a2de13274510.png)
-
-
-运行 server.py 
-
-
-![image](https://user-images.githubusercontent.com/30351807/115872339-470b0c00-a474-11eb-8339-109b82f464eb.png)
-
-
-等待显示出 Starting server, listen at: 0.0.0.0:8899 访问 http://127.0.0.1:8899/ 显示下面界面即为正常。
-
-![image](https://user-images.githubusercontent.com/30351807/115872365-4ffbdd80-a474-11eb-8be6-cd4150242d66.png)
-
-linux 下安装可能会需要
-
-![image](https://user-images.githubusercontent.com/30351807/115872401-58ecaf00-a474-11eb-9a1a-e933173585a7.png)
-
-安装即可
-```
-yum install libglvnd-glx-1.0.1-0.8.git5baa1e5.el7.x86_64
-```
-
-
 ### Star
 
 [![Stargazers over time](https://starchart.cc/smxiazi/NEW_xp_CAPTCHA.svg)](https://starchart.cc/smxiazi/NEW_xp_CAPTCHA)
