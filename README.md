@@ -15,7 +15,8 @@
 * 新增支持监控Proxy的流量
 * 弃用 muggle-ocr 模块，只是使用ddddocr，模块安装更简单方便
 * 注意，请更新ddddocr模块到最新版本
-```未安装ddddocr模块
+```
+未安装ddddocr模块
 python3 -m pip install ddddocr
 已经安装过的请更新模块
 python3 -m pip install -U ddddocr
