@@ -1,4 +1,4 @@
-# xp_CAPTCHA V4.2(瞎跑-白嫖版)
+# xp_CAPTCHA V4.3(瞎跑-白嫖版)
 
 * 若要准确率更高，请用 https://github.com/smxiazi/xp_CAPTCHA （这个调用别人商业成熟的验证码识别接口）
 
@@ -8,8 +8,22 @@
 * 爆破时，记得把线程设置为1。
 
 **********
-相关文章：
-[验证码识别插件-xp_CAPTCHA的高级用法](https://mp.weixin.qq.com/s/iA9XEuoTyjOAxSDoIJsm5Q)
+### 更新4.3 2024-8-19
+* 新增支持验证码指定输出格式，如：纯整数0-9、纯小写英文a-z、小写英文a-z + 大写英文A-Z + 整数0-9等
+* 新增支持自定义数据包，如发送POST数据包等
+* 新增支持高级模式5个验证码均可同时用（之前只能一个验证码使用高级模式）
+* 新增支持监控Proxy的流量
+* 弃用 muggle-ocr 模块，只是使用ddddocr，模块安装更简单方便
+
+<img width="1720" alt="image" src="https://github.com/user-attachments/assets/719d66f3-6469-4985-b612-832ac43e9170">
+
+
+<img width="723" alt="image" src="https://github.com/user-attachments/assets/e47a2884-3127-4cd2-ae27-375a7f6c4530">
+
+<img width="1042" alt="image" src="https://github.com/user-attachments/assets/8c52f888-f238-4ab5-a579-3c5009d0dffb">
+
+
+
 
 **********
 
